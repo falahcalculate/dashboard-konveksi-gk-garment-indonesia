@@ -379,7 +379,7 @@ if uploaded_file:
                         # === TAMBAHKAN LOGIKA PEMETAAN FLEKSIBEL INI ===
                         # Cek apakah AI menggunakan nama kolom kuantitas yang berbeda (Qty / quantity / total_pcs)
                         qty_cols = [c for c in df_result.columns if c.lower() in ['qty', 'quantity', 'jumlah', 'total_pcs', 'total pcs']]
-                           if "Total Pcs" not in df_result.columns and qty_cols:
+                        if "Total Pcs" not in df_result.columns and qty_cols:
                              df_result["Total Pcs"] = df_result[qty_cols[0]]
 
                         # Fallback Aman: Jika AI gagal mengembalikan angka Qty, ambil langsung dari data asli (df_raw)
