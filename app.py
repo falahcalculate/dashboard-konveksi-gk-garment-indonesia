@@ -16,7 +16,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 # =========================================================
 st.set_page_config(page_title="Dashboard Konveksi GK Garment Indonesia", layout="wide", page_icon="🧵")
 
-st.title("🧵 Dashboard Produksi Konveksi (AI-Powered)")
+st.title("🧵 Dashboard Produksi Konveksi GK Garment Indonesia")
 st.write(
     "Upload file Excel pesanan customer, atur asumsi produksi, lalu biarkan AI merapikan, "
     "memvalidasi, dan menghitung rekap produksi — lengkap dengan rumus Excel yang bisa "
