@@ -376,6 +376,17 @@ if uploaded_file:
                             parsed_json = parsed_json.get("data", [parsed_json])
                         df_result = pd.DataFrame(parsed_json)
 
+                        # === TAMBAHKAN LOGIKA PEMETAAN FLEKSIBEL INI ===
+                        # Cek apakah AI menggunakan nama kolom kuantitas yang berbeda (Qty / quantity / total_pcs)
+                        qty_cols = [c for c in df_result.columns if c.lower() in ['qty', 'quantity', 'jumlah', 'total_pcs', 'total pcs']]
+                           if "Total Pcs" not in df_result.columns and qty_cols:
+                             df_result["Total Pcs"] = df_result[qty_cols[0]]
+
+                        # Fallback Aman: Jika AI gagal mengembalikan angka Qty, ambil langsung dari data asli (df_raw)
+                          if "Total Pcs" not in df_result.columns or df_result["Total Pcs"].sum() == 0:
+                          if "Qty" in df_raw.columns:
+                            df_result["Total Pcs"] = df_raw["Qty"]
+
                         # Validasi & pembersihan minimal terhadap hasil AI
                         for key in REQUIRED_AI_KEYS:
                             if key not in df_result.columns:
