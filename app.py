@@ -29,7 +29,21 @@ uploaded_file = st.file_uploader("📂 Upload File Excel Pesanan Customer (.xlsx
 
 if uploaded_file:
     try:
-        df_raw = pd.read_excel(uploaded_file)
+        # Membaca file Excel secara Universal (semua sheet)
+xls = pd.ExcelFile(uploaded_file)
+all_sheets = []
+
+for sheet_name in xls.sheet_names:
+    # Baca masing-masing sheet
+    df_sheet = pd.read_excel(xls, sheet_name=sheet_name)
+    
+    # Beri label netral agar AI tahu dari tab mana baris data ini berasal
+    df_sheet['Nama Tab Excel'] = sheet_name 
+    
+    all_sheets.append(df_sheet)
+
+# Gabungkan semua data tanpa mempedulikan perbedaan format antar sheet
+df_raw = pd.concat(all_sheets, ignore_index=True)
         
         st.write("### 📄 Preview Data Asli dari Customer")
         st.dataframe(df_raw, use_container_width=True)
