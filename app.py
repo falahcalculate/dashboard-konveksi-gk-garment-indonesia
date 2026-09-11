@@ -74,8 +74,7 @@ satu tabel rekap produksi yang BERSIH dan SIAP PAKAI, dengan langkah wajib berik
    lain, quantity mencurigakan, deadline mepet). Kosongkan ("") jika tidak ada catatan.
 6. JANGAN menghitung estimasi kain atau biaya — itu akan dihitung otomatis oleh rumus Excel.
 
-Kembalikan HANYA array JSON murni (tanpa markdown, tanpa penjelasan) berisi objek dengan KUNCI PERSIS ini:
-"Kode Pesanan", "Nama Item", "Warna", "Total Pcs" (angka/integer), "Jenis Sablon/Bordir", "Prioritas", "Catatan".
+"Kembalikan HANYA array JSON murni (tanpa pembungkus markdown ```json, tanpa teks pengantar, tanpa penjelasan penutup) yang valid.".
 """
 
 # =========================================================
