@@ -383,7 +383,7 @@ if uploaded_file:
                              df_result["Total Pcs"] = df_result[qty_cols[0]]
 
                         # Fallback Aman: Jika AI gagal mengembalikan angka Qty, ambil langsung dari data asli (df_raw)
-                          if "Total Pcs" not in df_result.columns or df_result["Total Pcs"].sum() == 0:
+                        if "Total Pcs" not in df_result.columns or df_result["Total Pcs"].sum() == 0:
                           if "Qty" in df_raw.columns:
                             df_result["Total Pcs"] = df_raw["Qty"]
 
